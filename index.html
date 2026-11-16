@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SquadMatch - Temukan Teman & Study Buddy</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto space-y-6">
+        
+        <!-- Header / Banner -->
+        <div class="bg-gradient-to-r from-indigo-600 to-violet-600 rounded-3xl p-6 md:p-8 shadow-2xl flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <span class="text-xs font-bold uppercase tracking-widest bg-black/25 px-3 py-1 rounded-full text-indigo-100">SquadMatch Engine</span>
+                <h1 class="text-3xl font-extrabold text-white mt-2">Cari Teman Mabar & Belajar</h1>
+                <p class="text-indigo-100 text-sm mt-1">Pilih hobi Anda dan biarkan sistem mencocokkan kelompok yang pas secara instan.</p>
+            </div>
+            <button onclick="toggleSecretDebug()" class="bg-black/30 hover:bg-black/40 text-xs text-indigo-200 border border-indigo-400/30 px-4 py-2.5 rounded-xl transition">
+                🔍 Mode Analisis Himpunan (Tugas)
+            </button>
+        </div>
+
+        <!-- Panel Filter & Interaksi Hobi -->
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-5">
+            <h2 class="text-sm font-semibold uppercase tracking-wider text-indigo-400">Pilih Hobi / Minat Anda (Filter Data):</h2>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <label class="flex items-center space-x-3 bg-slate-950 p-3.5 rounded-2xl border border-slate-800 cursor-pointer hover:border-indigo-500 transition">
+                    <input type="checkbox" value="Coding" class="hobbies-checkbox w-5 h-5 text-indigo-600 rounded bg-slate-900 border-slate-700">
+                    <span class="text-sm font-medium">💻 Coding</span>
+                </label>
+                <label class="flex items-center space-x-3 bg-slate-950 p-3.5 rounded-2xl border border-slate-800 cursor-pointer hover:border-indigo-500 transition">
+                    <input type="checkbox" value="Futsal" class="hobbies-checkbox w-5 h-5 text-indigo-600 rounded bg-slate-900 border-slate-700">
+                    <span class="text-sm font-medium">⚽ Futsal</span>
+                </label>
+                <label class="flex items-center space-x-3 bg-slate-950 p-3.5 rounded-2xl border border-slate-800 cursor-pointer hover:border-indigo-500 transition">
+                    <input type="checkbox" value="Gaming" class="hobbies-checkbox w-5 h-5 text-indigo-600 rounded bg-slate-900 border-slate-700">
+                    <span class="text-sm font-medium">🎮 Gaming</span>
+                </label>
+                <label class="flex items-center space-x-3 bg-slate-950 p-3.5 rounded-2xl border border-slate-800 cursor-pointer hover:border-indigo-500 transition">
+                    <input type="checkbox" value="Desain" class="hobbies-checkbox w-5 h-5 text-indigo-600 rounded bg-slate-900 border-slate-700">
+                    <span class="text-sm font-medium">🎨 Desain</span>
+                </label>
+            </div>
+
+            <button onclick="runMatchmaker()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3.5 rounded-2xl transition shadow-lg shadow-indigo-600/30">
+                ✨ Temukan Squad / Teman Cocok
+            </button>
+        </div>
+
+        <!-- Panel Akademik / Matematika Himpunan (Tersembunyi secara default) -->
+        <div id="debugBox" class="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl hidden space-y-4">
+            <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                <h3 class="text-sm font-bold text-indigo-400 uppercase tracking-wider">Laporan Teori Himpunan (Di Balik Layar)</h3>
+                <span class="text-xs bg-indigo-950 text-indigo-300 px-2.5 py-1 rounded-md font-mono">Matematika Diskrit</span>
+            </div>
+            <div id="mathExplanation" class="text-xs text-slate-300 font-mono space-y-2 leading-relaxed">
+                <p>Silakan pilih hobi di atas dan klik tombol pencarian untuk melihat hasil analisis himpunan (Irisan, Union, dan Difference).</p>
+            </div>
+        </div>
+
+        <!-- Daftar Kartu Profil / Anggota Squad -->
+        <div class="space-y-4">
+            <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-400 px-2">Hasil Pencarian Komunitas (<span id="matchCount">0</span> Ditemukan):</h2>
+            <div id="profilesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Kartu Profil akan dimasukkan secara dinamis via JS -->
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
